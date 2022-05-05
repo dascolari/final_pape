@@ -1,0 +1,48 @@
+ID,DESCRIPTION
+01,Faculty
+02,Staff
+03,Staff (03-obsolete value)
+04,Summer school faculty (04-obsolete value)
+05,Staff (05-obsolete value)
+11,Doctoral level student
+12,Master's level student
+13,Undergraduate student
+14,Extension School program candidate
+15,Summer School student
+21,Faculty (Proxy)
+22,Officer (Proxy)
+23,Staff (Proxy)
+31,Alumnus (HU)
+32,S-Borrower (B)
+33,Alumnus (College)
+34,S-Borrower (Fletcher)
+35,S-Borrower (HST-MIT-MEMP)
+36,S-Borrower (O)
+37,S-Borrower (U)
+38,S-Borrower (WGBH)
+39,S-Borrower (FASX)
+40,S-Borrower (MIT undergraduate)
+50,Library special borrower (50)
+51,Library special borrower (51)
+52,Library special borrower (52)
+53,Library special borrower (53)
+54,Library special borrower (54)
+55,Library special borrower (55)
+60,Bindery
+61,Carrel
+62,In-building
+63,Interlibrary loan
+64,Lost
+65,Missing
+66,Other Harvard library
+67,Preservation
+68,Reserves
+69,Rush recall
+70,Study/Office
+71,Library-managed pseudopatron (71)
+72,Library-managed pseudopatron (72)
+80,Sub-library pseudopatron
+81,Scanning project (81)
+82,Scanning project (HD-82)
+83,JSTOR scanning project
+99,Conversion exception
