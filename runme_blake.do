@@ -5,6 +5,6 @@ global code "$path/code"
 global output "$path/output"
 
 cd $code
-do loans.do
-do table_5.do
-do key_results.do
+do 1_loans_base.do
+do 3a_table_5.do
+do 3b_table_keyresults.do
