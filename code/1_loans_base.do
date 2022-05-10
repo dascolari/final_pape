@@ -55,8 +55,12 @@ replace location = "none" if location ==""
 // gen a scanned variable where units are scanned after year_scanned
 gen scanned = 1 if year_scanned < year_loaned
 replace scanned = 0 if scanned ==.
-drop year_scanned
-order t bib_doc_id loans location year_loaned
+
+tostring year_scanned, replace
+replace year_scanned = "never_treated" if year_scanned == "."
+replace year_scanned = "treated_" + year_scanned if year_scanned != "never_treated"
+
+order t bib_doc_id loans location year_loaned year_scanned
 
 cd "$panel_data"
 save base.dta, replace 
