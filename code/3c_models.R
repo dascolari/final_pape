@@ -1,5 +1,4 @@
 # specifcy models with new school estimators
-
 # rm and then load to control exactly what is in environment
 rm(list= ls()[!(ls() %in% ls(all.name = FALSE, pattern = '^path*'))])
 load(file = file.path(path_panel, 'rpanels.RData'))
@@ -20,7 +19,10 @@ bacon_decomp = bacon(bacon_formula,
                      time_var = "t")%>%
   group_by(type) %>% 
   summarise(avg_est = weighted.mean(estimate, weight), 
-            weight = sum(weight))
+            weight = sum(weight)) %>% as.data.frame()
+save(file = file.path(path_models, 'bacon_decomp.RDs'), list = "bacon_decomp")
+
+
 
 base_cs <- base %>% 
   mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
@@ -43,6 +45,19 @@ atts <- att_gt(yname = 'loans', # LHS variable
                panel = TRUE)
 
 cs_model <- aggte(atts, type = "group", balance_e = TRUE, na.rm = TRUE)
+save(file = file.path(path_models, 'cs_model.RDs'), list = "cs_model")
+
+base_twfe <- base %>% 
+  mutate(loginfl_loans = log(loans+1), 
+         loaned = ifelse(loans != 0, 1, 0))
+
+twfe_formula <-  as.formula("loginfl_loans ~ scanned + location*t")
+
+twfe_mod <- feols(fml = twfe_formula, 
+                  data = base_twfe, 
+                  se = "cluster", 
+                  fixef = "bib_doc_id")
+
 
 # # all this is the bud of a loop that I'm working on to do all of our panels at once
 # # but it isn't ready yet, so i comment it out
