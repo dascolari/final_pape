@@ -65,7 +65,7 @@ base_twfe <- base %>%
 
 SA_mod <- feols(fml = loginfl_loans ~ sunab(treatment_period, year_loaned) + scanned, 
                 data = base_twfe,
-                subset = ~ year_loaned < 2011)
+                subset = ~ t < 9)
 
 summary(SA_mod)
 SA_mod["coefficients"]
