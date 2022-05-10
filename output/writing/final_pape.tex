@@ -1,0 +1,65 @@
+\documentclass{article}
+
+% these packages let you do math
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% we need these packages for fancy R tables
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{xcolor}
+
+% these packages play with the spacing/margins of the document. Uncomment the commands on lines 16 and 17 to see what they do.
+\usepackage{a4wide}
+\usepackage{setspace}
+\usepackage{geometry}
+%\doublespacing
+%\geometry{margin=1.5in}
+
+% this package helps us with including images. Setting the graphics path makes it easier to refer to things in the \includegraphics command.
+\usepackage{graphicx}
+\graphicspath{ {../figures/} }
+
+% make some hyperlinks using the \href command
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+% set the author, title, and date of the document. \maketitle adds it to the document.
+\author{David Scolari, John Bowman, Blake Lin}
+\title{Replication and Extension}
+\date{May 2022}
+
+\begin{document}
+\maketitle
+\section*{Description of Data-Cleaning Approach}
+
+\section*{Table 5 Replication}
+% Requires the booktabs if the memoir class is not being used
+\begin{table}[htbp]
+   \centering
+   \caption{Table 5 Replication}
+   %\topcaption{Table captions are better up top} % requires the topcapt package
+  \input{../tables/table_5.tex}
+   \label{tab:booktabs}
+\end{table}
+
+
+\input{../tables/effects_table.tex}
+
+
+\section*{Additional Results}
+
+\begin{table}[htbp]
+   \centering
+   \caption{Additional Results}
+   %\topcaption{Table captions are better up top} % requires the topcapt package
+  \input{../tables/key_results.tex}
+   \label{tab:booktabs}
+\end{table}
+
+\end{document}
