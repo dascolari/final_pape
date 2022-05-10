@@ -1,8 +1,8 @@
 // make sure to run runme.do to generate global paths before running this script
 
-cd $data
+cd "$panel_data"
 
-use master.dta, clear
+use base.dta, clear
 
 // gen outcomes: 
 // 0 inflated log loans = ln(loans+1) and... 
@@ -30,11 +30,11 @@ eststo: xtreg loaned scanned i.year_loc, fe vce(r)
 estadd local book_fe "Yes"
 estadd local yearloc_fe "Yes"
 
-cd $output
+cd "$output"
 esttab using table_5.tex, replace ///
 	se obslast ///
 	keep(scanned) ///
 	coeflabels(scanned "Post-Scanned") ///
 	mtitles("log-OLS" "LPM") ///
 	scalars("book_fe Book FE" "yearloc_fe Year-Location FE")
-cd $code
+cd "$code"

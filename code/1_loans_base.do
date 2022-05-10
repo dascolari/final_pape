@@ -1,6 +1,6 @@
 // make sure to run runme.do to generate global paths before running this script
 
-cd $data
+cd "$data"
 use loans_merged.dta, clear
 
 //save years for looping
@@ -17,6 +17,8 @@ foreach y in `years' {
 }
 keep t* bib_doc_id
 reshape long t, i(bib_doc_id) j(year_loaned)
+
+save unique_base.dta, replace
 
 // merging the raw data back onto the book-year matrix
 // the result will be the same as the original raw data with...
@@ -56,6 +58,6 @@ replace scanned = 0 if scanned ==.
 drop year_scanned
 order t bib_doc_id loans location year_loaned
 
-cd $data
-save master.dta, replace 
-cd $code
+cd "$panel_data"
+save base.dta, replace 
+cd "$code"
