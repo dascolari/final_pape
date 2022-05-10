@@ -1,5 +1,5 @@
 // copy and paste your filepath that points to the scolari_david folder
-global path "[BLAKES FILEPATH]/final_pape"
+global path "/Users/user/Documents/MA Courses/Causal Inference/final_pape"
 global data "$path/data"
 globa panel_data "$data/panel_data"
 global code "$path/code/stata_code"
