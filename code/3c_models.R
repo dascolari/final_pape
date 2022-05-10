@@ -27,10 +27,11 @@ save(file = file.path(path_models, 'bacon_decomp.RDs'), list = "bacon_decomp")
 base_cs <- base %>% 
   mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
-         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001))
+         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+  mutate(loginfl_loans = log(loans+1))
 
 # carlos santanna for base
-atts <- att_gt(yname = 'loans', # LHS variable
+atts <- att_gt(yname = 'loginfl_loans', # LHS variable
                tname = 't', # panel time variable
                idname = 'bib_doc_id', # firms' panel id variable
                gname = 'treatment_period', 
@@ -47,10 +48,6 @@ atts <- att_gt(yname = 'loans', # LHS variable
 cs_model <- aggte(atts, type = "group", balance_e = TRUE, na.rm = TRUE)
 save(file = file.path(path_models, 'cs_model.RDs'), list = "cs_model")
 
-base_twfe <- base %>% 
-  mutate(loginfl_loans = log(loans+1), 
-         loaned = ifelse(loans != 0, 1, 0))
-
 twfe_formula <-  as.formula("loginfl_loans ~ scanned + location*t")
 
 twfe_mod <- feols(fml = twfe_formula, 
@@ -58,6 +55,20 @@ twfe_mod <- feols(fml = twfe_formula,
                   se = "cluster", 
                   fixef = "bib_doc_id")
 
+# sa_checkout = feols(loginfl_loans ~ , data = base_twfe, subset = ~ year < 
+
+base_twfe <- base %>% 
+  mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
+                                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
+         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+  mutate(loginfl_loans = log(loans+1))
+
+SA_mod <- feols(fml = loginfl_loans ~ sunab(treatment_period, year_loaned) + scanned, 
+                data = base_twfe,
+                subset = ~ year_loaned < 2011)
+
+summary(SA_mod)
+SA_mod["coefficients"]
 
 # # all this is the bud of a loop that I'm working on to do all of our panels at once
 # # but it isn't ready yet, so i comment it out
