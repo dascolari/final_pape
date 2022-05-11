@@ -20,14 +20,19 @@ iplot(mod_SA,sep =.5,ref.line = -1,
       sub = "Base SA")
 
 # filtering for faculty
-faculty_SA = faculty %>%
+
+faculty_SA = faculty %>% 
+  mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
+                                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
+         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+  mutate(loginfl_loans = log(loans+1)) %>%
   filter(type == 'faculty')
 
 faculty_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
                         data = faculty_SA,
                         subset = ~ t < 9)
 
-iplot(faculty_mod_SA,sep =.5,ref.line = -1,
+iplot(faculty_mod_SA,sep =.5,ref.line = 0,
       xlab = 'Time to treatment',
       main = 'Event study: Staggered treatment',
       sub = "Faculty SA")
@@ -46,7 +51,11 @@ iplot(faculty_mod_SA,sep =.5,ref.line = -1,
 #       sub = "inbuilding SA")
 
 #filtering for doctors
-doc_SA = students %>%
+doc_SA = students %>% 
+  mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
+                                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
+         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+  mutate(loginfl_loans = log(loans+1)) %>% 
   filter(type == 'doctor')
 
 doc_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
@@ -60,7 +69,11 @@ iplot(doc_mod_SA,sep =.5,ref.line = -1,
 
 #filtering for masters
 mas_SA = students %>% 
-  filter(type == 'master')
+  mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
+                                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
+         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+  mutate(loginfl_loans = log(loans+1)) %>% 
+filter(type == 'master')
 
 mas_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
                     data = mas_SA,
@@ -73,6 +86,10 @@ iplot(mas_mod_SA,sep =.5,ref.line = -1,
 
 #filtering for undergrad
 under_SA = students %>% 
+  mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
+                                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
+         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+  mutate(loginfl_loans = log(loans+1)) %>% 
   filter(type == 'undergrad')
 
 under_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
