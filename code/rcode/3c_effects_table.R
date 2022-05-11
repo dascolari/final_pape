@@ -2,18 +2,26 @@ rm(list= ls()[!(ls() %in% ls(all.name = FALSE, pattern = '^path*'))])
 load(file.path(path_models, 'bacon_decomp.RDs'))
 load(file.path(path_models, 'cs_model.RDs'))
 load(file.path(path_models, 'twfe_model.RDs'))
+load(file.path(path_models, 'cs_faculty.RDs'))
+load(file.path(path_models, 'cs_undergrad.RDs'))
+load(file.path(path_models, 'cs_master.RDs'))
+load(file.path(path_models, 'cs_doctor.RDs'))
+load(file.path(path_models, 'cs_inbuilding.RDs'))
 
-  
-  # access estimates, se, tvals, and pvals from each model
-  
+# access estimates, se, tvals, and pvals from each model
+
 estimates <- c("Estimated ATT", twfe_mod[["coefficients"]][["scanned"]], cs_model[["overall.att"]])
 se <- c("", twfe_mod[["se"]][["scanned"]], cs_model[["overall.se"]])
 
+estimates_cs <- c("Estimated ATT", twfe_mod[["coefficients"]][["scanned"]], cs_model[["overall.att"]])
+se_cs <- c("", twfe_mod[["se"]][["scanned"]], cs_model[["overall.se"]])
+
+
 effects <- rbind(estimates, se) %>% as.data.frame()
-  # this stuff is for p vals, but they thicccccc so we don't even need them 
-  # gimme_tha_p <- as.data.frame(twfe_model[["coeftable"]])
-  # p <- c(yval, gimme_tha_p$`Pr(>|t|)`[1], "")
-  
+# this stuff is for p vals, but they thicccccc so we don't even need them 
+# gimme_tha_p <- as.data.frame(twfe_model[["coeftable"]])
+# p <- c(yval, gimme_tha_p$`Pr(>|t|)`[1], "")
+
 
 # doctor up the effecs a lil bit
 colnames(effects) <- c("V1", "TWFE", "CS")
