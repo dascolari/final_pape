@@ -21,6 +21,7 @@ reshape long t, i(bib_doc_id) j(year_loaned)
 gen _master = 1
 gen _doctor = 2
 gen _undergrad = 3
+gen _non_student = 4
 reshape long _, i(bib_doc_id year_loaned t) j(type, string) 
 drop _
 
@@ -30,7 +31,7 @@ use loans_merged.dta, clear
 gen type = "master" if borrower_status == 12
 replace type = "doctor" if borrower_status == 11
 replace type = "undergrad" if borrower_status == 13
-drop if type == ""
+replace type = "non_student" if type == ""
 
 //merging the raw data back onto the book-year matrix
 merge m:1 year_loaned bib_doc_id type using unique_student.dta
