@@ -7,7 +7,16 @@ base_SA <- base %>%
   mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
                                               "0", substr(year_scanned, 9, nchar(year_scanned)))), 
          treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
-  mutate(loginfl_loans = log(loans+1))
+  mutate(loginfl_loans = log(loans+1)) %>%  mutate(t=t-1)
+
+base_SA = base_SA %>% 
+  mutate(treat_year = ifelse(t <= 8 & t > 0, 2011 - (t - 1), 0)) 
+
+base_SA = base_SA %>% 
+  select(treat_year, everything())
+
+state_crime = state_crime %>% 
+  mutate(time_to_treat = ifelse(treat_year == 0, 0,year - treat_year))
 
 # preliminary SA model
 mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
@@ -26,9 +35,9 @@ faculty_SA = faculty %>%
                                               "0", substr(year_scanned, 9, nchar(year_scanned)))), 
          treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
   mutate(loginfl_loans = log(loans+1)) %>%
-  filter(type == 'faculty')
+  filter(type == 'faculty') %>%  mutate(t=t-1)
 
-faculty_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
+faculty_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t, bin = "bin::1") + scanned, 
                         data = faculty_SA,
                         subset = ~ t < 9)
 
@@ -56,7 +65,16 @@ doc_SA = students %>%
                                               "0", substr(year_scanned, 9, nchar(year_scanned)))), 
          treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
   mutate(loginfl_loans = log(loans+1)) %>% 
-  filter(type == 'doctor')
+  filter(type == 'doctor') %>%  mutate(t=t-1)
+
+# doc_SA = doc_SA %>% 
+#   mutate(treat_year = ifelse(t <= 16 & t > 0, 1992 - (cnt - 1), 0)) 
+# 
+# state_crime = state_crime %>% 
+#   select(treat_year, everything())
+# 
+# state_crime = state_crime %>% 
+#   mutate(time_to_treat = ifelse(treat_year == 0, 0,year - treat_year))
 
 doc_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
                     data = doc_SA,
@@ -76,8 +94,7 @@ mas_SA = students %>%
 filter(type == 'master')
 
 mas_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
-                    data = mas_SA,
-                    subset = ~ t < 9)
+                    data = mas_SA)
 
 iplot(mas_mod_SA,sep =.5,ref.line = -1,
       xlab = 'Time to treatment',
@@ -111,4 +128,8 @@ iplot(under_mod_SA,sep =.5,ref.line = -1,
 # SA_mod_mas <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
 #                     data = non_twfe,
 #                     subset = ~ t < 9)
+
+
+
+#you do this: describe twfe vs cs table and litreview(look at papers lit review plus review of methods
 
