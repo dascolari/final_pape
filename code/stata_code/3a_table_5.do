@@ -23,21 +23,25 @@ eststo clear
 // log-OLS TWFE w/ yearloc fe specification 
 eststo: xtreg loginfl_loans scanned i.year_loc, fe vce(r)
 estadd local book_fe "Yes"
+estadd local year_fe "No"
 estadd local yearloc_fe "Yes"
 
 // log-OLS TWFE NO yearloc fe specification 
-eststo: xtreg loginfl_loans scanned, fe vce(r)
+eststo: xtreg loginfl_loans scanned t, fe vce(r)
 estadd local book_fe "Yes"
+estadd local year_fe "Yes"
 estadd local yearloc_fe "No"
 
 // LPM TWFE w/ yearloc fe fespecification
 eststo: xtreg loaned scanned i.year_loc, fe vce(r)
 estadd local book_fe "Yes"
+estadd local year_fe "No"
 estadd local yearloc_fe "Yes"
 
 // LPM TWFE NO yearloc fe fespecification
-eststo: xtreg loaned scanned, fe vce(r)
+eststo: xtreg loaned scanned t, fe vce(r)
 estadd local book_fe "Yes"
+estadd local year_fe "Yes"
 estadd local yearloc_fe "No"
 
 cd "$tables"
@@ -46,5 +50,5 @@ esttab using table_5.tex, replace ///
 	keep(scanned) ///
 	coeflabels(scanned "Post-Scanned") ///
 	mtitles("log-OLS" "log-OLS" "LPM" "LPM") ///
-	scalars("book_fe Book FE" "yearloc_fe Year-Location FE")
+	scalars("book_fe Book FE" "year_fe Year FE" "yearloc_fe Year-Location FE")
 cd "$code"
