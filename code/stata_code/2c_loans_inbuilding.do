@@ -19,7 +19,7 @@ foreach y in `years' {
 keep t* bib_doc_id
 reshape long t, i(bib_doc_id) j(year_loaned)
 gen _inbuilding = 1
-gen _interlib = 2
+gen _not_inbuilding = 2
 reshape long _, i(bib_doc_id year_loaned t) j(type, string) 
 drop _
 
@@ -27,7 +27,7 @@ save unique_inbuilding.dta, replace
 
 use loans_merged.dta, clear
 gen type = "inbuilding" if borrower_status == 1
-replace type = "nonfaculty" if type == ""
+replace type = "not_inbuilding" if type == ""
 
 //merging the raw data back onto the book-year matrix
 merge m:1 year_loaned bib_doc_id type using unique_inbuilding.dta

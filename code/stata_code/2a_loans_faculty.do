@@ -1,6 +1,6 @@
 // make sure to run runme.do to generate global paths before running this script
 
-cd $data
+cd "$data"
 use loans_merged.dta, clear
 
 //save years and types for looping
