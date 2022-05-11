@@ -78,13 +78,14 @@ SA_mod_mas <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned,
                     data = under_twfe,
                     subset = ~ t < 9)
 
-#filtering for nonstudents
-non_twfe = students %>% 
-  mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
-                                              "0", substr(year_scanned, 9, nchar(year_scanned)))), 
-         treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
-  mutate(loginfl_loans = log(loans+1)) %>% filter(type == 'non_students')
+# #filtering for nonstudents
+# non_twfe = students %>% 
+#   mutate(treatment_period = as.numeric(ifelse(year_scanned == "never_treated", 
+#                                               "0", substr(year_scanned, 9, nchar(year_scanned)))), 
+#          treatment_period = ifelse(treatment_period == 0, 0, treatment_period - 2001)) %>% 
+#   mutate(loginfl_loans = log(loans+1)) %>% filter(type == 'non_students')
+# 
+# SA_mod_mas <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
+#                     data = non_twfe,
+#                     subset = ~ t < 9)
 
-SA_mod_mas <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
-                    data = non_twfe,
-                    subset = ~ t < 9)
