@@ -6,6 +6,7 @@ library(haven)
 library(bacondecomp)
 library(foreach)
 library(stargazer)
+library(kableExtra)
 
 # quarantine the here() function to this single call 
 # makes it easy to work around if bugs pop up
