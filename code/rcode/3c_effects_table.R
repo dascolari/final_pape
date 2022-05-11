@@ -13,11 +13,30 @@ load(file.path(path_models, 'cs_inbuilding.RDs'))
 estimates <- c("Estimated ATT", twfe_mod[["coefficients"]][["scanned"]], cs_model[["overall.att"]])
 se <- c("", twfe_mod[["se"]][["scanned"]], cs_model[["overall.se"]])
 
-estimates_cs <- c("Estimated ATT", twfe_mod[["coefficients"]][["scanned"]], cs_model[["overall.att"]])
-se_cs <- c("", twfe_mod[["se"]][["scanned"]], cs_model[["overall.se"]])
+est_cs_faculty <- c("Faculty ATT", "", cs_faculty[["overall.att"]])
+se_cs_faculty <- c("", "", cs_faculty[["overall.se"]])
+
+est_cs_undergrad <- c("Undergrad ATT", "", cs_undergrad[["overall.att"]])
+se_cs_undergrad <- c("", "", cs_undergrad[["overall.se"]])
+
+est_cs_master <- c("Master ATT", "", cs_master[["overall.att"]])
+se_cs_master <- c("", "", cs_master[["overall.se"]])
+
+est_cs_doctor <- c("Doctor ATT", "", cs_doctor[["overall.att"]])
+se_cs_doctor <- c("", "", cs_doctor[["overall.se"]])
+
+est_cs_inbuilding <- c("Inbuilding ATT", "", cs_inbuilding[["overall.att"]])
+se_cs_inbuilding <- c("", "", cs_inbuilding[["overall.se"]])
 
 
-effects <- rbind(estimates, se) %>% as.data.frame()
+
+
+effects <- rbind(estimates, se,
+              est_cs_faculty, se_cs_faculty,
+              est_cs_undergrad, se_cs_undergrad,
+              est_cs_master, se_cs_master,
+              est_cs_doctor, se_cs_doctor,
+              est_cs_inbuilding, se_cs_inbuilding) %>% as.data.frame()
 # this stuff is for p vals, but they thicccccc so we don't even need them 
 # gimme_tha_p <- as.data.frame(twfe_model[["coeftable"]])
 # p <- c(yval, gimme_tha_p$`Pr(>|t|)`[1], "")
