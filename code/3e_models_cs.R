@@ -66,7 +66,7 @@ atts <- att_gt(yname = 'loginfl_loans', # LHS variable
                tname = 't', # panel time variable
                idname = 'bib_doc_id', # firms' panel id variable
                gname = 'treatment_period', 
-               data = base_df, # data
+               data = df_base, # data
                xformla = ~ location,
                est_method = "dr",
                control_group = "notyettreated",
@@ -81,7 +81,7 @@ atts_faculty <- att_gt(yname = 'loginfl_loans', # LHS variable
                        tname = 't', # panel time variable
                        idname = 'bib_doc_id', # firms' panel id variable
                        gname = 'treatment_period', 
-                       data = faculty_df, # data
+                       data = df_faculty, # data
                        xformla = ~ location,
                        est_method = "dr",
                        control_group = "notyettreated",
@@ -166,5 +166,6 @@ save(file = file.path(path_models, 'cs_master.RDs'), list = "cs_master")
 cs_doctor <- aggte(atts_doctor, type = "group", balance_e = TRUE, na.rm = TRUE)
 save(file = file.path(path_models, 'cs_doctor.RDs'), list = "cs_doctor")
 
-cs_inbulding <- aggte(atts_inbulding, type = "group", balance_e = TRUE, na.rm = TRUE)
-save(file = file.path(path_models, 'cs_inbulding.RDs'), list = "cs_inbulding")
+cs_inbuilding <- aggte(atts_inbuilding, type = "group", balance_e = TRUE, na.rm = TRUE)
+save(file = file.path(path_models, 'cs_inbuilding.RDs'), list = "cs_inbuilding")
+
