@@ -17,9 +17,11 @@ bacon_all <- foreach(d = 1:D, .combine = 'rbind') %do% {
 
   cohorts <- get(pane) %>%
     group_by(year_scanned, scanned, t) %>%
-    summarise(loans = sum(loans), .groups = 'drop')
+    summarise(loans = sum(loans), .groups = 'drop') %>% 
+    mutate(loginfl_loans = log(loans+1))
+    
   
-  bacon_formula <- as.formula(paste("loans", "scanned", sep = " ~ "))
+  bacon_formula <- as.formula(paste("loginfl_loans", "scanned", sep = " ~ "))
   
   # specify bacon decomposition
   # wrangle full df of 2x2s into summary table by type
