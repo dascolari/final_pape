@@ -14,8 +14,10 @@ mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned,
                 data = base_SA,
                 subset = ~ t < 9)
 
-summary(mod_SA)
-mod_SA["coefficients"]
+iplot(mod_SA,sep =.5,ref.line = -1,
+      xlab = 'Time to treatment',
+      main = 'Event study: Staggered treatment',
+      sub = "Base SA")
 
 # filtering for faculty
 faculty_SA = faculty %>%
@@ -25,19 +27,23 @@ faculty_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scann
                         data = faculty_SA,
                         subset = ~ t < 9)
 
-summary(SA_mod)
-SA_mod["coefficients"]
+iplot(faculty_mod_SA,sep =.5,ref.line = -1,
+      xlab = 'Time to treatment',
+      main = 'Event study: Staggered treatment',
+      sub = "Faculty SA")
 
-# filtering for inbuilding
-inbuilding_SA = inbuilding %>% 
-  filter(type == 'inbuilding')
-
-inbuilding_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
-                         data = inbuilding_SA,
-                         subset = ~ t < 9)
-
-summary(SA_mod)
-SA_mod["coefficients"]
+# # filtering for inbuilding
+# inbuilding_SA = inbuilding %>% 
+#   filter(type == 'inbuilding')
+# 
+# inbuilding_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
+#                          data = inbuilding_SA,
+#                          subset = ~ t < 9)
+# 
+# iplot(inbuilding_mod_SA,sep =.5,ref.line = -1,
+#       xlab = 'Time to treatment',
+#       main = 'Event study: Staggered treatment',
+#       sub = "inbuilding SA")
 
 #filtering for doctors
 doc_SA = students %>%
@@ -47,6 +53,11 @@ doc_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned,
                     data = doc_SA,
                     subset = ~ t < 9)
 
+iplot(doc_mod_SA,sep =.5,ref.line = -1,
+      xlab = 'Time to treatment',
+      main = 'Event study: Staggered treatment',
+      sub = "Doctoral SA")
+
 #filtering for masters
 mas_SA = students %>% 
   filter(type == 'master')
@@ -55,6 +66,11 @@ mas_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned,
                     data = mas_SA,
                     subset = ~ t < 9)
 
+iplot(mas_mod_SA,sep =.5,ref.line = -1,
+      xlab = 'Time to treatment',
+      main = 'Event study: Staggered treatment',
+      sub = "Master SA")
+
 #filtering for undergrad
 under_SA = students %>% 
   filter(type == 'undergrad')
@@ -62,6 +78,11 @@ under_SA = students %>%
 under_mod_SA <- feols(fml = loginfl_loans ~ sunab(treatment_period, t) + scanned, 
                     data = under_SA,
                     subset = ~ t < 9)
+
+iplot(under_mod_SA,sep =.5,ref.line = -1,
+      xlab = 'Time to treatment',
+      main = 'Event study: Staggered treatment',
+      sub = "Undergrad SA")
 
 # #filtering for nonstudents
 # non_twfe = students %>% 
