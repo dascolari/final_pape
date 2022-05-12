@@ -64,18 +64,35 @@ Since the theoretical argument remains ambiguous, an empirical study into the ca
 The raw data we use to replicate Nagaraj and Reimers 2021 is the loan activity for books within the Harvard library system between 2003 and 2011. The full digitization of this set of books at Harvard took over five years, providing providing a natural experiment where each book's loan activity is observed both pre and post digitization. There were a total of 88,006 books loaned during that time period. We build our panel using each of these 88,006 unique books as our panel id and counting the number of loans it experiences between 2003 and 2011. This panel allows us to directly replicate part Nagaraj and Reimers 2021. 
 
 We also observe a borrower identifier in the raw data, allowing us to count loan events for different types of borrowers, such as Harvard faculty and students. We use these borrower IDs to make panels that, instead of counting loans made by all types of borrowers, only count loans made by specified borrower types. For these panels, we still use the 88,006 unique book IDs as our panel units, so the datasets do not change in number of observations, just in their method for counting loan events. This data that includes borrow type specified loan counts is used for our extension to Nagaraj and Reimers 2021 and does not appear in their paper at all. 
+
 \section{Methodology}
-By estimating the effect of digitization on book loans in the Harvard library system, Nagaraj and Reimers attempt to investigate how the demand for books is im
+By estimating the effect of digitization on book loans in the Harvard library system, Nagaraj and Reimers attempt to determine how the demand for books is effected by digitization in a setting where the search cost benefits of digitization are muted by the already robust tools for locating books that exist within a university library. They expect to find negative results that indicate the substitution effect of digital books is dominating the discovery effect. 
+
+Books are scanned by Google over a five year period. Most of our 88,006 books are never scanned, and between about two and thirteen thousand books are scanned each year. Because of this digitization rollout, our treatment is assigned with differential in timing, meaning that a book might be part of the untreated group in one year and part of the treated group in another year. This treatment rollout is summarized in Table[].
 
 Nagaraj and Reimers use a modified TWFE specification to identify their DID estimator.  Generally, TWFE estimates the difference in differences estimator with a regression of the following form
 \begin{align}
 	y_{it} = \beta_0 + \delta D_{it} + \beta_1X_{it} + \alpha_t  +  \alpha_i + u_{it}
 \end{align}
-where $D_{it}$ is a dummy that indicates whether unit $i$ is treated during period $t$. Nagaraj and Reimers deviate from this form slightly in their paper by using the grouped variable of year and shelf location as their time variable. 
+where $D_{it}$ is a dummy that indicates whether unit $i$ is treated during period $t$. Nagaraj and Reimers deviate from this form slightly in their paper by using the grouped variable of year and shelf location as their time variable.
+
+While TWFE has for years been the default method for estimating DID with differential timing, recent work in econometrics cite()()() has identified bias that TWFE induces on its estimate. This bias is best show by the Bacon decomposition, which is shown in table []. 
+
+Two-way Fixed Effects (TWFE) is the standard Difference-in-Differences estimation method. However, its efficacy is limited to situations when treatment occurs simultaneously. Since our data set contains multiple time periods and variations in treatment timing - the books were scanned in different years, here we would try using Bacon decomposition to solve the problem of using late-treated units compared to early-treated units. By using the binary treatment variable, we will re-estimate the effect of scanned books on borrowing rate by coding a book as “treated” if at any time of that year it had been scanned into digital form.
+
+For simplicity of modeling and interpretation, scanned will be the only variable on the right-hand side, we would not include other covariates. Second, we aggregate the panel units by treatment cohort for computational purposes. To see the treatment effect on different groups of borrowers, we filtered the data into different datasets based on borrower types.
+
+The table below is showing the weight and estimates of each type of borrower:
+
+\input{../tables/bacon.tex}
+
+Looking at the table from the “All borrowers” result, we can see in the Bacon decomposition that less than half of the TWFE parameter estimate is coming from comparing the treatment books to a group of never-treated books. The average DD estimate for that group is -0.59  with a weight of 0.409, so the influence of later to early treated in the mix is rather large and decreases the treatment effect in the TWFE estimate. The influence of later to early treated remains the same for other types of borrowers, that the estimate of treated vs. never-treated being the highest but got pulled down because of differential timing groups.
 
 When we have this differential timing in our treatment assignment, we need to alter our interpretation of the DID estimator. Instead of a single 2x2 DID, we take the weighted average of multiple 2x2 DIDs to compute our estimator. This begs the question: How exactly does TWFE weight the individual 2x2 estimators? 
 
 The weighting of the 2x2 DIDs is the subject of Andrew Goodman-Bacon's 2019 paper. He shows how the weights that OLS imposes on the 2x2 DIDs introduces bias into the TWFE estimator. Calloway and Santa'Anna 2021 proposes an alternative weighting that addresses this bias. We will discuss the Bacon decomposition of the TWFE in the upcoming subsection, followed by a comparison between a TWFE specification of Lott and Mustard's analysis and Calloway and Santa'Anna's DID (CS) specification. 
+
+The CS estimator splits treatment units into cohorts by assignment date. It then finds the ATT for each cohort g over the rollout period. It takes a weighted overage of these cohort ATTs to give an overall ATT estimate.
 
 \input{../tables/rolly_t.tex}
 
@@ -118,38 +135,13 @@ Perhaps the most interesting ATT for the third model is the base post scanned ca
 
 
 \subsection{extension to new estimators}
-Two-way Fixed Effects (TWFE) is the standard Difference-in-Differences estimation method. However, its efficacy is limited to situations when treatment occurs simultaneously. Since our data set contains multiple time periods and variations in treatment timing - the books were scanned in different years, here we would try using Bacon decomposition to solve the problem of using late-treated units compared to early-treated units. By using the binary treatment variable, we will re-estimate the effect of scanned books on borrowing rate by coding a book as “treated” if at any time of that year it had been scanned into digital form.
-
-For simplicity of modeling and interpretation, scanned will be the only variable on the right-hand side, we would not include other covariates. Second, we aggregate the panel units by treatment cohort for computational purposes. To see the treatment effect on different groups of borrowers, we filtered the data into different datasets based on borrower types.
-
-The table below is showing the weight and estimates of each type of borrower:
-
-
-
-\input{../tables/bacon.tex}
-
-
-
-
-Looking at the table from the “All borrowers” result, we can see in the Bacon decomposition that less than half of the TWFE parameter estimate is coming from comparing the treatment books to a group of never-treated books. The average DD estimate for that group is -0.59  with a weight of 0.409, so the influence of later to early treated in the mix is rather large and decreases the treatment effect in the TWFE estimate. The influence of later to early treated remains the same for other types of borrowers, that the estimate of treated vs. never-treated being the highest but got pulled down because of differential timing groups.
-
-
-
-
 Now, we would try using the Callaway-Sant’anna (CS) method to avoid the problem of late-to-early comparison by only using the never or not-yet treated as controls group through subsetting dataset. This method would split the observations with the same time of treatment into cohorts, 
 then estimate the treatment effect based on the cohorts.
 The following table compares the TWFE model to CS in capturing the effect of the scanned treatment on borrowing rate loginflloans. The first row shows the overall “scanned effect” for all borrowers, and the rest is showing the treatment effect of other types of borrowers using different sets of observations.
- 
- 
- 
+
 \input{../tables/effects_table.tex}
  
- 
- 
 We can see that in all of the groups, TWFE overestimated the treatment effect. By using the CS estimation, the sign of the treatment effect maintains the same but the significance of the estimator increases in all of our groups. The reduction of treatment effect by using the CS estimation range from 1.3\% to 8.2\%, the lowest at 1.3\% being the effect for all borrowers and 8.2\% for doctoral students.
-
-\input{../tables/bacon.tex}
-
 
 \section{Conclusion}
 Expansions on the two way fixed effect models can be achieved through additional data on group membership. We found that nonstudent/nonfaculty library patrons were primarily responsible for the reduced checkout rates for treated books. One alternative angle is decomposing that groups to see if it is driven by some subgroup. This will be constrained by what information is collected by the library on these patrons as well as what they are allowed to share. This study could also be applied to non university libraries, which will have different patron population compositions. If non student/non faculty ATT remains consistent, this could cause even more drastically reduced checkout rates, since public libraries serve the general public rather than academic populations.
