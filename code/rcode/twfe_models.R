@@ -4,7 +4,6 @@ load(file = file.path(path_panel, 'filtered_panels.RData'))
 
 load(file = file.path(path_models, 'panel_looper.RDs'))
 D <- length(panels)
-d = 1
 
 # twfe loop
 foreach(d = 1:D) %do% {
