@@ -1,20 +1,34 @@
 ##Table 3##
 
+Two-way Fixed Effects (TWFE) is the standard Difference-in-Differences estimation method. However, its efficacy is limited to situations when treatment occurs simultaneously. Since our data set contains multiple time periods and variations in treatment timing - the books were scanned in different years, here we would try using Bacon decomposition to solve the problem of using late-treated units compared to early-treated units. By using the binary treatment variable, we will re-estimate the effect of scanned books on borrowing rate by coding a book as “treated” if at any time of that year it had been scanned into digital form.
+
+For simplicity of modeling and interpretation, scanned will be the only variable on the right-hand side, we would not include other covariates. Second, we aggregate the panel units by treatment cohort for computational purposes. To see the treatment effect on different groups of borrowers, we filtered the data into different datasets based on borrower types.
+
+The table below is showing the weight and estimates of each type of borrower:
+
+
+
+(the table)
 
 
 
 
-
-
-
-
+Looking at the table from the “All borrowers” result, we can see in the Bacon decomposition that less than half of the TWFE parameter estimate is coming from comparing the treatment books to a group of never-treated books. The average DD estimate for that group is -0.59  with a weight of 0.409, so the influence of later to early treated in the mix is rather large and decreases the treatment effect in the TWFE estimate. The influence of later to early treated remains the same for other types of borrowers, that the estimate of treated vs. never-treated being the highest but got pulled down because of differential timing groups.
 
 
 
 ##Table 4##
-Two-way Fixed Effects (TWFE) is the standard Difference-in-Differences estimation method. However, its efficacy is limited to situations when treatment occurs simultaneously. Since our data set contains multiple time periods and variations in treatment timing - the books were scanned in different years, it would be wise for us to use the Callaway-Sant’anna (CS) to avoid the problem of late-to-early comparison by only using the never or not-yet treated as controls group through subsetting dataset. This method would split the observations with the same time of treatment into cohorts,  then estimate the treatment effect based on the cohorts.
-The following table compares the TWFE model to CS in capturing the effect of the scanned treatment on borrowing rate \emph{loginfl_loans}. The first model shows the overall “scanned effect” for all borrowers, next we filter the data into different subset based on borrower types to see the difference in their reaction to scanned books. 
 
+Now, we would try using the Callaway-Sant’anna (CS) method to avoid the problem of late-to-early comparison by only using the never or not-yet treated as controls group through subsetting dataset. This method would split the observations with the same time of treatment into cohorts, 
+then estimate the treatment effect based on the cohorts.
+The following table compares the TWFE model to CS in capturing the effect of the scanned treatment on borrowing rate /{loginfl_loans}. The first row shows the overall “scanned effect” for all borrowers, and the rest is showing the treatment effect of other types of borrowers using different sets of observations.
+ 
+ 
+ 
 (the table)
+ 
+ 
+ 
+We can see that in all of the groups, TWFE overestimated the treatment effect. By using the CS estimation, the sign of the treatment effect maintains the same but the significance of the estimator increases in all of our groups. The reduction of treatment effect by using the CS estimation range from 1.3% to 8.2%, the lowest at 1.3% being the effect for all borrowers and 8.2% for doctoral students.
 
-We can see that in all of the groups, TWFE overestimated the treatment effect. By using the CS estimation, the sign of the treatment effect maintain the same but the significance of the estimator increases in all of our groups. The reduction of treatment effect by using the CS estimation range from 1.3% to 8.2%, the lowest 1.3% being the effect for all borrowers and 8.2% for doctoral students. 
+
