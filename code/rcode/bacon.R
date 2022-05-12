@@ -16,10 +16,10 @@ bacon_all <- foreach(d = 1:D, .combine = 'rbind') %do% {
   substr(pane, 10, nchar(pane))
 
   cohorts <- get(pane) %>%
+    mutate(loans = loans + 1) %>%
     group_by(year_scanned, scanned, t) %>%
     summarise(loans = sum(loans), .groups = 'drop') %>% 
-    mutate(loginfl_loans = log(loans+1))
-    
+    mutate(loginfl_loans = log(loans))
   
   bacon_formula <- as.formula(paste("loginfl_loans", "scanned", sep = " ~ "))
   
