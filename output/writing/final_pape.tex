@@ -103,21 +103,9 @@ goodman bacon 2021: Difference-in-differences with variation in treatment timing
 maybe scunning's mixtape, shout out our boy
 
 \section{Data}
+The raw data we use to replicate Nagaraj and Reimers 2021 is the loan activity for books within the Harvard library system between 2003 and 2011. There were a total of 88,006 books loaned during that time period. We build our panel using each of these 88,006 unique books as our panel id and counting the number of loans it experiences between 2003 and 2011. This panel allows us to directly replicate part Nagaraj and Reimers 2021. 
 
-The raw data we use to replicate Nagaraj and Reimers 2021 is the loan activity for books within the Harvard library system between 2003 and 2011. After processing, 88,006 of the total books were loaned during that time period. Each of these 88,006 books is a panel unit for which we observe the number of loans between 2003 and 2011. 
-
-
-
-Since most books are never loaned, our analyses focus on 88,006 books (out of over   Our panel data structure allows for a difference-in-differences design that can incorporate time and, notably, book fixed effects, increasing confidence in the research design.
-
-The goal of my data cleaning approach is to make it a balanced panel of book level loan counts between 2003 and 2011, such that there are a total of 88,006 observations (one per book) in each calendar year.
-The main challenge that I found in doing this is that there is not a loan even for every unique book in each year. So to obtain the desired balanced panel, I need to implement ”empty” loan events into each year to account for books that are not loaned in said year.
-
-The main pipeline that I use for this task involve Stata’s ”collapse” and ”reshape commands”. This is perhaps not the best way to go about this, mainly because, as I will describe in detail, I am interested in the byproduct results of these commands and not the primary results. However, I was unable to find a more direct method of creating this result, and since this method does produce the desired panel, I proceed with it. In a research setting, I would consult colleagues and spend more time looking for a more direct methods of making this panel.
-
-Collapsing the data by book will result in a column of summary statistics (the primary result) and a column of 88,006 unique book ids. The latter column is the vector we are after, and to it, I add a column for each year, which after reshaping, expand the unique cross-sectional book units into a panel that spans 9 years, 2003-2011. Each book is reflected once in each year. There are 792,054 observations in this matrix.
-
-After creating this ”blank” panel, I merge the raw data back onto it. The result will be the same as the original raw data with the addition of ”empty” loan evens so that every unique book is considered in each year, even if not loaned. I then collapse again to sum loan events by book and year, making sure to preserve location and scanned variables. The result of this collapse is nearly the finished product, however, location and scanned variables do not carry over to the books that have 0 loans for a given year. I have a loop method that is described in detail in the comments of my code, however, I do want to mention that this loop relies on the variables yearscanned and location being invariant within cross-sectional units. This is true by construction for yearscanned— a book cannot be scanned again after it is already in the Google Books system. However, it seems possible for a physical book to be moved from Harvard Library location to another. I do some data exploration to convince myself that location does not vary within books. Given more time, I would prefer to double check this and perhaps check this with colleagues.
+We also observe a borrower identifier in the raw data, allowing us to count loan events for different types of borrowers, such as Harvard faculty and students. We use these borrower IDs to make panels that, instead of counting loans made by all types of borrowers, only count loans made by specified borrower types. For these panels, we still use the 88,006 unique book IDs as our panel units, so the datasets do not change in number of observations, just in their method for counting loan events. This data that includes borrow type specified loan counts is used for our extension to Nagaraj and Reimers 2021 and does not appear in their paper at all. 
 
 \section{Methodology}
 
