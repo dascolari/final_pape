@@ -1,4 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.17)  12 MAY 2022 13:27
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.4.21)  12 MAY 2022 13:34
+
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -361,6 +363,9 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 
 LaTeX Warning: Label `tab:booktabs' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `final_pape.aux'.
 
@@ -471,13 +476,20 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
+<<<<<<< HEAD
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 (../tables/table_5.tex) [3] (../tables/borrowers_combined.tex) [4]
 (../tables/bacon.tex) (../tables/effects_table.tex
+=======
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+(../tables/rolly_t.tex) (../tables/table_5.tex) [3] [4]
+(../tables/borrowers_combined.tex) [5] (../tables/bacon.tex)
+(../tables/effects_table.tex
+>>>>>>> 99f23d279111428c496a3d4f650b3a9aea0ca503
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [5] [6] (./final_pape.aux)
+) [6] [7] [8] (./final_pape.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -485,6 +497,7 @@ Package rerunfilecheck Info: File `final_pape.out' has not changed.
 (rerunfilecheck)             Checksum: AC1FC1F496E8C06513E73CDC63A0BD50;1103.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  10119 strings out of 478994
  145189 string characters out of 5858184
  464313 words of memory out of 5000000
@@ -509,5 +522,31 @@ PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  105 compressed objects within 2 object streams
  20 named destinations out of 1000 (max. 500000)
+=======
+ 10692 strings out of 478268
+ 165423 string characters out of 5846347
+ 470097 words of memory out of 5000000
+ 28709 multiletter control sequences out of 15000+600000
+ 477729 words of font info for 61 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 60i,12n,63p,1241b,331s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
+/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
+xlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
+ve/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on final_pape.pdf (8 pages, 159500 bytes).
+PDF statistics:
+ 150 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+>>>>>>> 99f23d279111428c496a3d4f650b3a9aea0ca503
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
