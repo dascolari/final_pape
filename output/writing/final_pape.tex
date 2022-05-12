@@ -65,6 +65,17 @@ The raw data we use to replicate Nagaraj and Reimers 2021 is the loan activity f
 
 We also observe a borrower identifier in the raw data, allowing us to count loan events for different types of borrowers, such as Harvard faculty and students. We use these borrower IDs to make panels that, instead of counting loans made by all types of borrowers, only count loans made by specified borrower types. For these panels, we still use the 88,006 unique book IDs as our panel units, so the datasets do not change in number of observations, just in their method for counting loan events. This data that includes borrow type specified loan counts is used for our extension to Nagaraj and Reimers 2021 and does not appear in their paper at all. 
 \section{Methodology}
+By estimating the effect of digitization on book loans in the Harvard library system, Nagaraj and Reimers attempt to investigate how the demand for books is im
+
+Nagaraj and Reimers use a modified TWFE specification to identify their DID estimator.  Generally, TWFE estimates the difference in differences estimator with a regression of the following form
+\begin{align}
+	y_{it} = \beta_0 + \delta D_{it} + \beta_1X_{it} + \alpha_t  +  \alpha_i + u_{it}
+\end{align}
+where $D_{it}$ is a dummy that indicates whether unit $i$ is treated during period $t$. Nagaraj and Reimers deviate from this form slightly in their paper by using the grouped variable of year and shelf location as their time variable. 
+
+When we have this differential timing in our treatment assignment, we need to alter our interpretation of the DID estimator. Instead of a single 2x2 DID, we take the weighted average of multiple 2x2 DIDs to compute our estimator. This begs the question: How exactly does TWFE weight the individual 2x2 estimators? 
+
+The weighting of the 2x2 DIDs is the subject of Andrew Goodman-Bacon's 2019 paper. He shows how the weights that OLS imposes on the 2x2 DIDs introduces bias into the TWFE estimator. Calloway and Santa'Anna 2021 proposes an alternative weighting that addresses this bias. We will discuss the Bacon decomposition of the TWFE in the upcoming subsection, followed by a comparison between a TWFE specification of Lott and Mustard's analysis and Calloway and Santa'Anna's DID (CS) specification. 
 
 \input{../tables/rolly_t.tex}
 
