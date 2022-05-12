@@ -12,10 +12,11 @@ rollout <- filtered_base %>%
   as.data.frame()
 
 colnames(rollout) <- c("Cohort", "Number of Books")
-row.names(rollout) <- NULL
+rownames(rollout) <- NULL
 
 rollout_table <- stargazer(rollout, 
           summary = F, 
+          rownames = F,
           title = "Treatment Cohorts")
 
 write(rollout_table, file = file.path(path_tables, 'rolly_t.tex'))
