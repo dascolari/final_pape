@@ -141,7 +141,7 @@ estadd local year_fe "Yes"
 // estadd local year_fe "Yes"
 
 cd "$tables"
-esttab , se obslast replace ///
+esttab using borrowers_combined.tex, se obslast replace ///
 	keep(scanned facultyXscanned doctorXscanned masterXscanned  undergradXscanned) ///
 	coeflabels(scanned "Post-Scanned" ///
 	faculty "Faculty" ///
