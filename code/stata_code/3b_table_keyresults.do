@@ -68,7 +68,7 @@ xtset book_borrower t
 // this might be the same as twfe where the panel units are book_borrower
 // xtreg loginfl_loans faculty scanned facultyXscanned i.year_loc, r
 eststo: xtreg loginfl_loans scanned faculty facultyXscanned t, fe vce(r)
-estadd local book_fe "Yes"
+estadd local book_fe "No"
 estadd local book_borrower "Yes"
 estadd local year_fe "Yes"
 
@@ -107,7 +107,7 @@ xtset book_borrower t
 // this might be the same as twfe where the panel units are book_borrower
 // xtreg loginfl_loans faculty scanned facultyXscanned i.year_loc, r
 eststo: xtreg loginfl_loans scanned doctor master undergrad doctorXscanned masterXscanned undergradXscanned t, fe vce(r)
-estadd local book_fe "Yes"
+estadd local book_fe "No"
 estadd local book_borrower "Yes"
 estadd local year_fe "Yes"
 
