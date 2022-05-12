@@ -1,0 +1,20 @@
+##Table 3##
+
+
+
+
+
+
+
+
+
+
+
+
+##Table 4##
+Two-way Fixed Effects (TWFE) is the standard Difference-in-Differences estimation method. However, its efficacy is limited to situations when treatment occurs simultaneously. Since our data set contains multiple time periods and variations in treatment timing - the books were scanned in different years, it would be wise for us to use the Callaway-Sant’anna (CS) to avoid the problem of late-to-early comparison by only using the never or not-yet treated as controls group through subsetting dataset. This method would split the observations with the same time of treatment into cohorts,  then estimate the treatment effect based on the cohorts.
+The following table compares the TWFE model to CS in capturing the effect of the scanned treatment on borrowing rate \emph{loginfl_loans}. The first model shows the overall “scanned effect” for all borrowers, next we filter the data into different subset based on borrower types to see the difference in their reaction to scanned books. 
+
+(the table)
+
+We can see that in all of the groups, TWFE overestimated the treatment effect. By using the CS estimation, the sign of the treatment effect maintain the same but the significance of the estimator increases in all of our groups. The reduction of treatment effect by using the CS estimation range from 1.3% to 8.2%, the lowest 1.3% being the effect for all borrowers and 8.2% for doctoral students. 
