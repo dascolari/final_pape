@@ -41,51 +41,11 @@
 \end{abstract}
 
 \section{Introduction}
-
-In their 2021 study, Abhishek Nagaraj and Imke Reimers examine whether digitization of books may actually increase, not decrease, sales of their physical versions when this digitization is accompanied by full-text search technology. They find an extensive literature that establishes the tendency of free or low-cost provisions of media ``cannibalizing" sales of older formats. However, prior to Nagaraj and Reimers 2021, there has been little work investigating the potential for digitization of antiquated media to improve search functions and hence increase sales for physical versions. 
+The Google Books project, launched in 2005, is one of the landmark projects of the digital age, not only scanning the text of a gargantuan corpus of books, but also making that textual content searchable by consumers. In their 2021 study, Abhishek Nagaraj and Imke Reimers examine whether digitization of books may actually increase, not decrease, sales of their physical versions when this digitization is accompanied by full-text search technology. They find an extensive literature that establishes the tendency of free or low-cost provisions of media ``cannibalizing" sales of older formats. However, prior to Nagaraj and Reimers 2021, there has been little work investigating the potential for digitization of antiquated media to improve search functions and hence increase sales for physical versions. 
 
 Part of their empirical approach uses loan activity for books within the Harvard library system. They find that, at least within the Harvard libraries, the effect of book digitization is negative on loans for those books that were digitized. Nagaraj and Reimers explain that, within a university library, a negative result makes sense because any search cost decrease due to digitization will be muted by the already robust search services that the library provides. 
 
 We aim to replicate Nagaraj and Reimers's identification strategy for the effect of digitization within the Harvard Library system, which relies on two-way fixed effects (TWFE). We will then apply recently developed difference in differences (DID) techniques which address the bias introduced by TWFE, specifically Goodman-Bacon's decomposition of the DID estimator under differential treatment timing and Calloway and Sant'Anna's DID estimator. 
-
- 
-\subsection{Still need to address:}
-Such an effect could be particu- larly salient in the market for books, where digital distribution can be accompanied by technologies that allow consumers to search through the full-text and discover (and buy) new content that would be otherwise hard to find (Ellison and Ellison, 2018).
-
-the Google Books digitization project. Launched in 2005, Google Books is one of the
-landmark projects of the digital age, with commentators likening it to a “modern-day Library of Alexandria”
-(Somers, 2017). Google Books did not just scan a book’s textual material but also made it searchable via
-optical character recognition (OCR) technology through its “Google Book Search” feature (referenced by
-Cambridge University Press in the epigraph). Further, a large portion of the Google Books corpus included
-less well-known and older books (including public domain content) that are of significant consumer interest
-but have become forgotten over time.
-
-We tackle the empirical challenges through a unique natural experiment leveraging a research partnership with Harvard’s Widener Library, which provided books to seed the Google Books program. The digitization effort at Harvard only included out of copyright works, which – unlike in-copyright works – were made available to consumers in their entirety. This allows us to fairly assess the tradeoff between cannibalization (by a close substitute) and discovery (through search technology). Owing to the size of the collection, book digitization (and subsequent distribution) at Widener took over five years, providing signifi- cant variation in the timing of book digitization.
-
-[EXPLAINING HOW THE MUTED EFFECT HELPS THEM IDENTIFY THE OVERALL EFFECT]
-Next, we examine the importance of the discovery and substitution channels by studying two paral- lel settings where one of these two effects is muted. First, we investigate the effects of digitization on loans within the Harvard system. In this setting, the discovery effect is muted since Harvard students and professors already had access to alternate discovery mechanisms through library services. In this setting, digitization reduces rather than increases demand, measured as loans within Harvard. 
-
- [THE IMPORTANCE OF THE RESEARCH Q]
-Answering our research questions is important, not only because it helps make theoretical progress on the literature on cross-channel substitution, but also because of its industry and policy relevance. The net revenue of the book publishing industry in the US in 2019 was more than thrice as large as the music rev- enues (\$25.9B as compared to \$7.3B; AAP 2020 and RIAA 2020, respectively). Further, the advent of the internet, platforms like Amazon.com and mass digitization projects like Google Books have presented numerous questions about balancing physical sales, digital distribution (via e-books) and mass digital distribution (via projects like Google Books) for firms in the publishing industry. In fact, legal debates have analyzed the specific case we focus on (the Google Books project) and debated whether it increases or de- creases sales (Samuelson, 2009). Our research provides quasi-experimental evidence to policy-makers and legal scholars, who have largely relied on anecdotal and theoretical data up to this point.
-
-\subsection{How Nagaraj and Reimers think digitization is working wrt demand (and supply) for books}
-How might digital distribution increase the sales of physical books? For end customers, the question of
-whether the digitization of books increases or reduces demand for physical works depends on two counter-
-acting forces. The first is the substitution effect of digital distribution as a competitor for existing, physical
-products as studied in the literature. Some consumers who would otherwise consume physical copies will
-switch to digital versions, driving the substitution effect. This is likely to happen when a consumer’s search
-costs are low, and when she has a taste for digital consumption, and it may be less relevant when books are 
-
-However, Google Books might stimulate a discovery effect due to increased awareness and searchability (see appendix Figure D.1.) Specifically, some consumers may start consuming the physical version for the first time, after digitization lowers search costs for books. This is likely to happen if they were made aware of a book through Google Books’ search engine and prefer to purchase physical copies rather than read online. This second mass of consumers will drive the discovery effect. The net effect of digitization is ambiguous and depends on the magnitude of these two margins.
-
-The tradeoff between substitution and discovery further differs for different margins of books and con- sumers. Notably, for popular books, already well-known to consumers (e.g. The Wealth of Nations), the substitution effect is likely to dominate. On the other hand, obscure books are likely to benefit from discov- ery, and unlikely to face the costs of substitution. The effect of Google Books on demand should therefore be more positive for less popular books. In addition, if consumers discover a particular author through a dig- itized copy, they might also seek out other books by the same author, even if these have not been digitized. Therefore, digitization might lead to an increase in physical sales for non-digitized works of a digitized author as well.
-
-Further, when the discovery channel is muted, the positive effects on demand should reduce or disappear altogether. For instance, for consumers within Harvard, who already benefit from access to search technol- ogy (through Harvard’s librarians and internal catalog system) the substitution effect is likely to dominate the discovery effect. Therefore, when considering loans within Harvard, the effect of digital distribution is likely much smaller, and even negative. On the flip side, when a digital platform provides access only to the search function, but not the entire text of the book (as is common with “snippet view”), we expect the positive effect of demand to remain strong. Our empirical analysis sheds light on these predictions as well.
-
-To summarize, our theoretical predictions are threefold. First, digital distribution allows consumers to search for topics they are interested in and discover works previously unknown to them. Second, if the digital medium offers a poor substitute for a physical book, demand for physical works is more likely to increase. Finally, digital provision will also allow publishers (especially small and independent ones) to identify new material and introduce new editions.
-Our theoretical arguments speak to past work on the impact of digital distribution on demand and supply for physical products. On the demand side, our arguments about the role of digital distribution in enhanc- ing consumer discovery add to work on the effects of digital technology on the diversity of consumption patterns (Brynjolfsson et al., 2006; Kumar et al., 2014; Holtz et al., 2020). This work shows that digital distribution channels tend to change consumption patterns by helping consumers discover more novel and niche products. Related work has looked at the complementary effects of news content sampled via social networks, which drives traffic to news websites by helping consumers discover specific news articles (Chiou and Tucker, 2017; Sismeiro and Mahmood, 2018). However, this literature focuses on how digital channels change consumption patterns and has not explored how online access coupled with access to digital search and discovery tools affects demand for and supply of the same product in physical form. Our theoretical and empirical analyses extend this work in this direction.
-
-On the supply side, past work has looked at other channels through which access to existing work improves the supply of new content. Most notably, the literature in copyright and digitization shows that free access to past work can often stimulate follow-on production of knowledge (Watson, 2017; Reimers, 2019; Heald, 2007). For example, the (copyright-related) digitization of magazine content improved the quality of content on Wikipedia (Nagaraj, 2018). Further, existing literature also suggests that digital access can be particularly helpful for smaller players and stimulate entry (Nagaraj, 2020; Zhang, 2018). However, whether or not digital distribution itself can improve the supply of physical products and whether it benefits smaller or larger players on this margin remains unexamined.
 
 \section{Literature Review}
 The motivation for this project comes from literature which examines the effect of free or low cost digital distribution of information goods on the demand on their physical counterparts. (Smith and Zentners 2016 review(1). 
@@ -108,8 +68,9 @@ We tackle the empirical challenges through a unique natural experiment leveragin
 \section{Methodology}
 
 \section{Results}
+\subsection{Replicating Nagaraj and Reimers}
 
-In first and third columns of Table 1, we directly replicate a result published in Nagaraj and Reimers. Using both log-inflated loans (log-OLS) as well as a binary indicating whether or not a book was loaned in a given period (LPM) as outcome variables, as well as book and year-location fixed effects, Nagaraj and Reimers find a negative and statistically significant effect of digitization for books within the Harvard Library system. This results suggests that digitization causes a substitution effect that is stronger than the demand increase it induces by reducing search costs. We expect the substitution effect to be stronger for this set of books because, within the Harvard library system, there are already robust services to help borrowers find books, such as librarians and online databases. Nagaraj and Reimers propose that the search cost effect of digitization is ``muted" within the Harvard library system because search costs are already low cite{nr2021}. 
+In the first and third columns of Table 1, we directly replicate a result published in Nagaraj and Reimers. Using both log-inflated loans (log-OLS) as well as a binary indicating whether or not a book was loaned in a given period (LPM) as outcome variables, as well as book and year-location fixed effects, Nagaraj and Reimers find a negative and statistically significant effect of digitization for books within the Harvard Library system. This results suggests that digitization causes a substitution effect that is stronger than the demand increase it induces by reducing search costs. We expect the substitution effect to be stronger for this set of books because, within the Harvard library system, there are already robust services to help borrowers find books, such as librarians and online databases. Nagaraj and Reimers propose that the search cost effect of digitization is ``muted" within the Harvard library system because search costs are already low cite{nr2021}. 
 
 \begin{table}[htbp]
    \centering
@@ -120,6 +81,9 @@ In first and third columns of Table 1, we directly replicate a result published 
 
 The second and fourth columns display the results of similar models that use year fixed effects instead of year-location fixed effects. These models are part of our extension and not found in Nagaraj and Reimers. We simplify the time fixed effects in order to better align Nagaraj and Reimers's DID specification with Goodman-Bacon's decomposition and Calloway and Sant'Anna's estimator. Since the aim of this extension is to identify the effect of digitization using these new methods, we need a base two-way fixed effects specification that can comply with them. We present these simplified model estimates along side Nagaraj and Reimer's original results to show that dropping the location element of the time fixed effects has only a small impact on the estimates' significance, sign, and magnitude.
 
+\subsection{Borrower Effects}
+For the base TWFE (column 1), the Average Treatment Effect on the Treated of a book getting scanned into google books on log inflated loans was -.0518 significant at the 95\% level. Put differently, the causal effect of scanning a book on checkouts was 5\% fewer checkouts from Harvard libraries. This ATT from the overall population shows that books available on google books act as substitutes for their physical counterparts. It could that either indicate that the superior convenience and/or cheaper cost of low-cost digital information goods exceeds the clumsy format of digital. 
+
 \begin{table}[htbp]
    \centering
    \caption{Additional Results}
@@ -127,6 +91,10 @@ The second and fourth columns display the results of similar models that use yea
   \input{../tables/borrowers_combined.tex}
    \label{tab:booktabs}
 \end{table}
+
+When the population is segmented group membership, the story changes. For the second model (column 2), the book checkouts were split into faculty checkouts and non-faculty checkouts  Here we interpret the ATT for a scanned book for faculty members as the sum of Post-Scanned and Faculty x Scanned, both of which are significant at the 95\% level. This means for there is a positive impact of checkout rates for books checked out by faculty members of Harvard. This lends more to the theoretical argument put forth by literature on the subject, which frames low-cost digital information goods as a means of connecting relevant information with consumers and positively shifting the demand for the physical counterparts of those goods. There was also less of a reduction in checkout rates for scanned books which was observed for non-faculty members, significant at the 95\% precent. 
+
+The last TWFE model displayed in this table is (column 3) shows ATT on checkouts rates for the Harvard student population. Again we see scanning causing increased checkout rates compared to non-scanned books, all significant at the 95\% level. As the level of study increases, there is a reduction in the ATT. One narrative to explain this phenomenon is that there is increased switching costs for older scholars to using google books as a resource. But the faculty ATT debunks this narrative as faculty ATT has the largest magnitude across the models. This trend should be further investigated with further study.
 
 \input{../tables/bacon.tex}
 
