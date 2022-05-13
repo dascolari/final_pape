@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex final_pape"] 1652418014 "final_pape.aux" "final_pape.bbl" "final_pape" 1652418017
+["bibtex final_pape"] 1652418014 "final_pape.aux" "final_pape.bbl" "final_pape" 1652460392
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/apacite/apacite.bst" 1374530685 141073 9d7b79dbf9d91133318126032cff8c27 ""
-  "final_pape.aux" 1652418016 4956 e21df4139f8cde1c1de0ab54fef37a19 "latex"
-  "pape_refs.bib" 1652417943 2372 e2f2f3bd20e543883ecc2bb67cb2d05e ""
+  "final_pape.aux" 1652460391 4956 e21df4139f8cde1c1de0ab54fef37a19 "latex"
+  "pape_refs.bib" 1652418098 2372 e2f2f3bd20e543883ecc2bb67cb2d05e ""
   (generated)
   "final_pape.bbl"
   "final_pape.blg"
-["dvips"] 1652418017 "final_pape.dvi" "final_pape.ps" "final_pape" 1652418017
-  "final_pape.dvi" 1652418016 51948 97a5dad346531187e33cfd8c92624c36 "latex"
+["dvips"] 1652460391 "final_pape.dvi" "final_pape.ps" "final_pape" 1652460392
+  "final_pape.dvi" 1652460391 53368 9363323b6155a28e06d64335491658d0 "latex"
   (generated)
   "final_pape.ps"
-["latex"] 1652418015 "final_pape.tex" "final_pape.dvi" "final_pape" 1652418017
+["latex"] 1652460390 "final_pape.tex" "final_pape.dvi" "final_pape" 1652460392
   "../tables/bacon.tex" 1652405424 1602 5029978cf7db2c7bdfac265a815280c2 ""
   "../tables/borrowers_combined.tex" 1652319095 1694 7f6929c80bcd4ce282f85fa95c047923 ""
   "../tables/effects_table.tex" 1652302337 1032 3a25ac0539c4707c7c8a5f28a2ef2260 ""
@@ -107,16 +107,16 @@
   "/usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf" 1646502317 40171 cdab547de63d26590bebb3baff566530 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/latex.fmt" 1650590496 2826465 e002126c3edd2936e4c966622fc33550 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "final_pape.aux" 1652418016 4956 e21df4139f8cde1c1de0ab54fef37a19 "latex"
+  "final_pape.aux" 1652460391 4956 e21df4139f8cde1c1de0ab54fef37a19 "latex"
   "final_pape.bbl" 1652418015 5135 edeb494518856d1dee105ae0a15cc9ae "bibtex final_pape"
-  "final_pape.out" 1652418016 1152 73664cb0275f53661860a3244a7b5187 "latex"
-  "final_pape.tex" 1652418012 22044 d6e9950945638b2dbd1cf8977ede3ce6 ""
+  "final_pape.out" 1652460391 1152 73664cb0275f53661860a3244a7b5187 "latex"
+  "final_pape.tex" 1652460389 22941 dc372258d69d7a3533f9ebeceafb947b ""
   (generated)
   "final_pape.aux"
   "final_pape.dvi"
   "final_pape.log"
   "final_pape.out"
-["ps2pdf"] 1652418017 "final_pape.ps" "final_pape.pdf" "final_pape" 1652418017
-  "final_pape.ps" 1652418017 474634 51397c3ac646aba1edd09d208c6185db "dvips"
+["ps2pdf"] 1652460392 "final_pape.ps" "final_pape.pdf" "final_pape" 1652460392
+  "final_pape.ps" 1652460392 478880 7190e8c8c1010ca8387021ec0d496d35 "dvips"
   (generated)
   "final_pape.pdf"

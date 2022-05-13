@@ -672,6 +672,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 OUTPUT final_pape.dvi
 INPUT ../tables/rolly_t.tex
 INPUT ../tables/rolly_t.tex
@@ -707,7 +708,6 @@ INPUT ./final_pape.bbl
 INPUT final_pape.bbl
 INPUT ./final_pape.bbl
 INPUT final_pape.bbl
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT final_pape.aux
 INPUT ./final_pape.out
 INPUT ./final_pape.out
