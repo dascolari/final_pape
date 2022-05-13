@@ -56,12 +56,14 @@ bacon_table <- kable(bacon_all[2:4],
                      caption = "Bacon Decompositison", 
                      col.names = c("2x2 Type", "Avg. Estimate", "Weight"),
                      booktabs = TRUE, 
+                     
 ) %>% 
   pack_rows(group_label = filter_labels[1], start_row = 1, end_row = 3) %>% 
   pack_rows(group_label = filter_labels[2], start_row = 3+1, end_row = 3*2) %>% 
   pack_rows(group_label = filter_labels[3], start_row = 3*2+1, end_row = 3*3) %>% 
   pack_rows(group_label = filter_labels[4], start_row = 3*3+1, end_row = 3*4) %>% 
   pack_rows(group_label = filter_labels[5], start_row = 3*4+1, end_row = 3*5) %>% 
-  pack_rows(group_label = filter_labels[6], start_row = 3*5+1, end_row = 3*6)
+  pack_rows(group_label = filter_labels[6], start_row = 3*5+1, end_row = 3*6) %>% 
+  kable_styling(latex_options = "HOLD_position")
 
 write(bacon_table, file = file.path(path_tables, "bacon.tex"))
